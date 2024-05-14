@@ -25,6 +25,12 @@ pytest-cov = "^5.0.0"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.pytest.ini_options]
+pythonpath = "backend"
+testpaths = ["tests"]
+asyncio_mode = "auto"
+python_files = ["test", "*_test.py", "*_tests.py", "test_*.py"]
+
 [tool.mypy]
 python_version = "3.12"
 # plugins = [
