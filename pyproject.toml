@@ -24,3 +24,11 @@ pytest-cov = "^5.0.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+python_version = "3.12"
+# plugins = [
+#     "pydantic.mypy"
+# ]
+strict = true
+ignore_missing_imports = true
