@@ -1,3 +1,4 @@
+import datetime
 import uuid
 from dataclasses import dataclass
 from enum import Enum
@@ -12,7 +13,7 @@ class StatusChoice(str, Enum):
     DELIVERED = 'delivered'
 
 
-@dataclass(frozen=True)
+@dataclass
 class OrderItem:
     id: uuid.UUID
     order_id: uuid.UUID
@@ -21,8 +22,13 @@ class OrderItem:
     quantity: int
 
 
-@dataclass(frozen=True)
+@dataclass
 class Order:
     id: uuid.UUID
     items: list[OrderItem]
-    status: StatusChoice
+    schedule_id: uuid.UUID | None = None
+    delivery_id: uuid.UUID | None = None
+    status: StatusChoice = StatusChoice.CREATED
+    created_at: datetime.datetime = datetime.datetime.now(datetime.UTC)
+    updated_at: datetime.datetime = datetime.datetime.now(datetime.UTC)
+
