@@ -2,6 +2,7 @@ import datetime
 import uuid
 from dataclasses import dataclass
 from enum import Enum
+from typing import Iterable
 
 
 class StatusChoice(str, Enum):
@@ -25,7 +26,7 @@ class OrderItem:
 @dataclass
 class Order:
     id: uuid.UUID
-    items: list[OrderItem]
+    items: Iterable[OrderItem]
     schedule_id: uuid.UUID | None = None
     delivery_id: uuid.UUID | None = None
     status: StatusChoice = StatusChoice.CREATED
