@@ -14,12 +14,18 @@ class StatusChoice(str, Enum):
     DELIVERED = 'delivered'
 
 
+class SizeChoice(str, Enum):
+    SMALL = 'small'
+    MEDIUM = 'medium'
+    LARGE = 'large'
+
+
 @dataclass
 class OrderItem:
     id: uuid.UUID
     order_id: uuid.UUID
     product: str
-    size: int
+    size: SizeChoice
     quantity: int
 
 
@@ -32,4 +38,3 @@ class Order:
     status: StatusChoice = StatusChoice.CREATED
     created_at: datetime.datetime = datetime.datetime.now(datetime.UTC)
     updated_at: datetime.datetime = datetime.datetime.now(datetime.UTC)
-
