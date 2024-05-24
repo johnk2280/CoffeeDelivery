@@ -10,7 +10,6 @@ def place_order(items: list[dict[str, Any]]) -> Order:
         raise ValueError('Items cannot be empty')
 
     order_id = uuid.uuid4()
-
     return Order(
         id=order_id,
         items=[OrderItem(
