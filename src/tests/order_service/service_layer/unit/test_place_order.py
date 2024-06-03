@@ -30,6 +30,5 @@ def test_place_order(
     expected: Order,
     expectation: Any,
 ) -> None:
-
     with expectation:
         assert place_order(items) == expected
