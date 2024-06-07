@@ -17,8 +17,6 @@ class Config(BaseSettings):
     API_PREFIX: str = Field(alias='API_PREFIX')
     API_VERSION: str = Field(alias='API_VERSION')
     ENVIRONMENT: Literal['dev', 'prod', 'test'] = Field(alias='ENVIRONMENT')
-    USER_ACCESS_TOKEN: str = Field(alias='USER_ACCESS_TOKEN')
-    USER_ACCESS_TOKEN_SSO: str = Field(alias='USER_ACCESS_TOKEN_SSO')
     LOG_LEVEL: str = Field(alias='LOG_LEVEL')
 
     BASE_DIR: Path = Path(__file__).resolve().parent.parent
