@@ -18,6 +18,7 @@ class ProductType(BaseModel):
 class Ingredient(BaseModel):
     id: uuid.UUID
     name: str
+    products: set['Product']
 
 
 class Supplier(BaseModel):
