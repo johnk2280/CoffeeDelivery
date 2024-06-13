@@ -1,5 +1,5 @@
-from .services import place_order
+from .services import add_product
 
 __all__ = [
-    'place_order',
+    'add_product',
 ]
