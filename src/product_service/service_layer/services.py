@@ -20,4 +20,18 @@ def add_product(
     available: bool,
     unit: Unit,
 ) -> Product:
+    # product = Product(
+    #     id=uuid.uuid4(),
+    #     name='хлеб пшеничный',
+    #     price=decimal.Decimal('50'),
+    #     available=True,
+    #     type=type_,
+    #     ingredients={ingredient_1, ingredient_2, ingredient_3},
+    #     supplier=supplier,
+    #     quantity=10,
+    #     unit=unit,
+    #     created_at=datetime.datetime.now(datetime.UTC),
+    #     updated_at=datetime.datetime.now(datetime.UTC),
+    # )
+
     pass
