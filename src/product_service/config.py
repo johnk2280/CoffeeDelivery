@@ -33,7 +33,8 @@ class Config(BaseSettings):
 
 class TestConfig(Config):
     model_config = SettingsConfigDict(
-        env_file='./.test.env',
+        # env_file='./.test.env',
+        env_file='./.env',
         env_file_encoding='utf-8',
         extra='ignore',
         env_prefix='TEST_',
