@@ -33,7 +33,7 @@ class Config(BaseSettings):
 
 class TestConfig(Config):
     model_config = SettingsConfigDict(
-        env_file='.test.env',
+        env_file='./.test.env',
         env_file_encoding='utf-8',
         extra='ignore',
         env_prefix='TEST_',
@@ -46,5 +46,9 @@ ENVIRONMENTS: dict[str, type[Config]] = {
 
 
 def get_settings() -> Config:
-    env = os.environ.get('ENVIRONMENT', 'dev').lower()
+    env = os.environ.get('ENVIRONMENT', 'test').lower()
     return ENVIRONMENTS[env]()
+
+
+if __name__ == '__main__':
+    settings = get_settings()
