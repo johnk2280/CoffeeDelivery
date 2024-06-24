@@ -1,8 +1,10 @@
+import os
 from pathlib import Path
 from typing import Literal
 
 from pydantic import Field
 from pydantic.v1 import BaseSettings
+from pydantic_settings import SettingsConfigDict
 
 
 class Config(BaseSettings):
@@ -27,3 +29,27 @@ class Config(BaseSettings):
                 f'{self.DB_USER}:{self.DB_PASS}@'
                 f'{self.DB_HOST}:{self.DB_PORT}/'
                 f'{self.DB_NAME}')
+
+
+class TestConfig(Config):
+    model_config = SettingsConfigDict(
+        # env_file='./.test.env',
+        env_file='./.env',
+        env_file_encoding='utf-8',
+        extra='ignore',
+        env_prefix='TEST_',
+    )
+
+
+ENVIRONMENTS: dict[str, type[Config]] = {
+    'test': TestConfig,
+}
+
+
+def get_settings() -> Config:
+    env = os.environ.get('ENVIRONMENT', 'test').lower()
+    return ENVIRONMENTS[env]()
+
+
+if __name__ == '__main__':
+    settings = get_settings()
