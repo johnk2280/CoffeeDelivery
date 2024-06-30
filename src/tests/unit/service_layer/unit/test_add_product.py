@@ -1,10 +1,9 @@
-import datetime
+
 import decimal
 import uuid
 
 from domain.models import Currency
 from domain.models import Ingredient
-from domain.models import Product
 from domain.models import ProductType
 from domain.models import Supplier
 from domain.models import Unit
