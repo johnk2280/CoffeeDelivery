@@ -5,9 +5,9 @@ from fastapi import status
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 
-from domain.models import Product
 from infrastructure.storage.orm.database import async_session_maker
 from infrastructure.storage.orm.models import ProductModel
+from .serializers import ProductsSerializer
 
 router = APIRouter(prefix='/products', tags=['products'])
 
@@ -15,7 +15,7 @@ router = APIRouter(prefix='/products', tags=['products'])
 @router.get(
     '',
     status_code=status.HTTP_200_OK,
-    response_model=list[Product],
+    response_model=list[ProductsSerializer],
 )
 async def get_products() -> Sequence[ProductModel]:
     async_session = async_session_maker()
@@ -26,4 +26,4 @@ async def get_products() -> Sequence[ProductModel]:
         .options(selectinload(ProductModel.suppliers))
         .options(selectinload(ProductModel.type))
     )).scalars().all()
-    return products
+    return {'items': products}
