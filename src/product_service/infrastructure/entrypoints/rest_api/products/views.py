@@ -26,4 +26,5 @@ async def get_products() -> Sequence[ProductModel]:
         .options(selectinload(ProductModel.suppliers))
         .options(selectinload(ProductModel.type))
     )).scalars().all()
+
     return {'items': products}
