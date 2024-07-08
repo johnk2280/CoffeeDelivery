@@ -18,6 +18,7 @@ router = APIRouter(prefix='/products', tags=['products'])
     response_model=list[ProductsSerializer],
 )
 async def get_products() -> Sequence[ProductModel]:
+
     async_session = async_session_maker()
 
     products = (await async_session.execute(
